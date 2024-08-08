@@ -1,5 +1,140 @@
-template-repository (1.0-1) unstable; urgency=medium
+read-edid (3.0.2-1.1) unstable; urgency=medium
 
-  * Initial release
+  * Non-maintainer upload.
+  * Fix FTBFS with GCC 10 (Closes: #972238)
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Paul Wise <pabs@debian.org>  Fri, 27 Nov 2020 14:20:39 +0800
+
+read-edid (3.0.2-1) unstable; urgency=medium
+
+  * Imported Upstream version 3.0.2
+  * Bump standards to 3.9.6, no changes needed
+  * Changed d/copyright to dep5 format
+  * d/gbp.conf added
+
+ -- Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>  Wed, 13 May 2015 12:41:28 +0200
+
+read-edid (3.0.1-2) unstable; urgency=medium
+
+  * Setting -DCLASSICBUILD or -DI2CBUILD depending on architecture
+  * Set Vcs-Git and Vcs-Browser in control
+  * Dropped requirement for autotools-dev
+
+ -- Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>  Fri, 14 Feb 2014 09:19:39 +0100
+
+read-edid (3.0.1-1) unstable; urgency=medium
+
+  * Migrated to dh
+  * Bump standard to 3.9.5
+  * Migrated to 3.0 quilt format
+  * New maintainer (closes: #733145)
+  * New upstream version
+  * Quilt patch system
+    - remove additional licence file from CMakeLists
+  * debian/copyright
+    - migrated to DEP5 format
+
+ -- Dariusz Dwornikowski <dariusz.dwornikowski@cs.put.poznan.pl>  Sun, 02 Feb 2014 14:15:31 +0100
+
+read-edid (2.0.0-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * debian/control: build-depend on automake1.10, since aclocal-1.10 is
+    assumed (Closes: #543047)
+
+ -- Stefano Zacchiroli <zack@debian.org>  Tue, 13 Oct 2009 14:03:14 +0200
+
+read-edid (2.0.0-3) unstable; urgency=low
+
+  * debian/rules: get-edid.c uses linux-specific ioperm(). It should not
+    be built on freebsd and hurd systems.
+
+ -- LIU Qi <liuqi82@gmail.com>  Wed, 22 Jul 2009 14:14:51 +0800
+
+read-edid (2.0.0-2) unstable; urgency=low
+
+  * add the build targets(amd64, lpia, kfreebsd-amd64, kfreebsd-i386 
+    and hurd-i386) for get-edid (Closes: #534742, #502127, #536186)
+  * add the vcs information in the debian/control
+  * upgrade the standard version to 3.8.2
+
+ -- LIU Qi <liuqi82@gmail.com>  Thu, 09 Jul 2009 18:12:52 +0800
+
+read-edid (2.0.0-1) unstable; urgency=low
+
+  * new upstream version and maintainer (Closes: #502125)
+    - the new version uses libx86 instead of LRMI (Closes: #495131)
+    - libx86 will build on new kernel (Closes: #502126)
+  * add missing binary-indep in debian/rules (Closes: #395741)
+  * new version is modified to build on any architecture 
+    - fixed the powerpc build problem (Closes: #406736)
+    - fixed the rebuild problem (Closes: #433713)
+  * install the read-edid in usr/sbin directory (Closes: #231307)
+
+ -- LIU Qi <liuqi82@gmail.com>  Mon, 11 May 2009 13:14:40 +0800
+
+read-edid (1.4.1-2.1) unstable; urgency=low
+
+  * Non-Maintainer Upload.
+  * Merged PowerPC patch from Colin Watson (Closes: #262102):
+    - get-edid-powerpc: new shell implementation using /proc/device-tree.
+    - debian/copyright: document licence of get-edid-powerpc.
+    - debian/control: add powerpc to Architecture.
+    - debian/rules: install get-edid-powerpc as get-edid on powerpc.
+  * debian/control: 
+    - Add missing Build-Depends on texinfo.
+    - Update long description to reflect PowerMac support.
+    - Bump Standards to 3.6.2 (changes to debian/copyright required).
+  * debian/copyright:
+    - Rewrite content to Policy 3.5.8 Section 12.7 compliance.
+
+ -- Martin-Éric Racine <q-funk@iki.fi>  Sun, 12 Mar 2006 15:12:35 +0200
+
+read-edid (1.4.1-2) unstable; urgency=low
+
+  * get-edid.man: wrote manpage for get-edid and parse-edid (Closes: #102233)
+  * debian/control:
+    - changed Section to "utils" (Closes: #145104)
+    - increment versioned build-dependency on debhelper to (>= 4.0)
+    - increment Standards-Version to 3.5.7
+  * debian/copyright:
+    - note change to upstream source (manpage)
+  * debian/rules:
+    - use DH_COMPAT and set debhelper compatibility level to 4
+    - set CFLAGS to include -g per Debian Policy 11.1
+    - set CFLAGS to inclue -O2 unless DEB_BUILD_OPTIONS includes "noopt", per
+      Debian Policy 11.1
+    - tweak install rule for debhelper 4 differences, and install new manpage
+
+ -- Branden Robinson <branden@debian.org>  Thu,  3 Oct 2002 00:35:32 -0500
+
+read-edid (1.4.1-1) unstable; urgency=low
+
+  * new upstream version
+  * debian/copyright:
+    - updated URL of upstream source
+    - updated Debian copyright info
+    - remove obsolete notice of Debian changes to upstream code
+  * debian/control:
+    - declare build-dependency on debhelper (>> 2.0)
+    - explained why package is i386-only in extended description
+    - fixed typo in description (Closes: #125304)
+  * debian/rules:
+    - updated to call upstream configure program, since upstream
+      now uses automake/autoconf
+    - updated to call new distclean rule instead of clean
+
+ -- Branden Robinson <branden@debian.org>  Tue, 18 Dec 2001 21:04:49 -0500
+
+read-edid (1.4.0-2) unstable; urgency=low
+
+  * Unfortunately, this is an i386-only package.  Edited control file to
+    reflect this. (Closes: #78751)
+
+ -- Branden Robinson <branden@debian.org>  Mon,  4 Dec 2000 14:27:00 -0500
+
+read-edid (1.4.0-1) unstable; urgency=low
+
+  * initial release
+
+ -- Branden Robinson <branden@debian.org>  Tue, 28 Nov 2000 01:33:26 -0500
